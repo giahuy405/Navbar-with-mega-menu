@@ -1,0 +1,196 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend', sans-serif;
+}
+
+body {
+    background-color: wheat;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: cadetblue;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+header {
+    background-color: white;
+    height: 65px;
+    line-height: 65px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.nav-links {
+    display: inline-flex;
+}
+
+.nav-links a {
+    padding: 0 15px;
+}
+
+.drop-menu {
+    background-color: white;
+    position: absolute;
+    top: 80px;
+    line-height: 45px;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+}
+
+
+
+.drop-menu li:hover {
+    background-color: gainsboro;
+}
+.mega-box{
+    background-color: white;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+}
+.nav-links li:hover .mega-box,
+.nav-links li:hover .drop-menu {
+    top: 70px;
+    visibility: visible;
+    opacity: 1;
+}
+ 
+.mega-content{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+}
+.mega-row{
+    width: calc(25% - 30px);
+    line-height: 45px;
+}
+.mega-row img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.nav-links .mega-box a{
+    padding: 0;
+}
+#checkboxDrop, .mobile-item,#checkboxMega{
+    display: none;
+}
+.btnOpenNav,.btnCloseNav{
+    display: none;
+}
+#btnOpenNav,#btnCloseNav{
+    display: none;
+}
+#main{
+    transition: ease-in-out .4s;
+    margin-left: 0px;
+}
+#main.shrink{
+    transition: ease-in-out .4s;
+   margin-left: 350px;
+}
+@media (max-width:992px) {
+    
+    .nav-links{
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        max-width: 350px;
+        height: 100vh;
+        background-color: lavender;
+        display: block;
+        padding: 50px 10px;
+        overflow-y: auto;
+        transition: .3s;
+    }
+    #btnOpenNav:checked ~ .nav-links{
+        left: 0;
+    }
+    #btnCloseNav:checked ~ .nav-links{
+        left: -100%;
+    }
+    .nav-links a{
+        display: block;
+    }
+    .drop-menu{
+        position: static;
+        /* visibility: visible;
+        opacity: 1; */
+        height: 0;
+        overflow: hidden;
+    }
+    .mega-box{
+        position: static;
+        /* visibility: visible;
+        opacity: 1; */
+        height: 0;
+        overflow: hidden;
+    }
+    .mega-content{
+        flex-direction: column;
+    }
+    .mega-row{
+        width: 100%;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #000;
+    }
+    #checkboxDrop:checked ~ .drop-menu,
+    #checkboxMega:checked  ~  .mega-box
+    {
+        visibility: visible;
+        opacity: 1;
+        height: 100%;
+    }
+   
+    .drop-menu a{
+        padding-left: 30px;
+    }
+    .nav-links a.desktop-item{
+        display: none;
+    }
+    .mobile-item{
+        display: block;
+        padding-left: 15px;
+    }
+    .btnOpenNav,.btnCloseNav{
+        display: block;
+        font-size: 25px;
+    }
+    .btnCloseNav{
+        position: absolute;
+        top: 10px;
+        right: 25px;
+    }
+    
+}
